@@ -1,6 +1,7 @@
 namespace Webot.Tests {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using NUnit.Framework;
     using FactoryRequest;
 
@@ -70,7 +71,7 @@ h,false)}else{k.attachEvent(""onload"",h);k.attachEvent(""onerror"",h)}}e=b-d;fu
             var expected = "success";
             Factory.Register(url, expected);
             var fields = new Dictionary<string, string>();
-            var form = new WebForm { Action = url, Method = "POST", Fields = fields };
+            var form = new WebForm { Action = url, Method = "POST", Fields = fields, Cookies = new CookieCollection() };
 
             var response = form.Submit();
             
@@ -78,9 +79,25 @@ h,false)}else{k.attachEvent(""onload"",h);k.attachEvent(""onerror"",h)}}e=b-d;fu
             Assert.AreEqual(expected, response);
         }
 
-        // test all properties that would be loaded from html
+        [Test]
+        public void ShouldProcessMultipleFieldsWithSameName() {
+            var form = WebForm.Build("<form><input name=\"field1\" value=\"1\" /><input name=\"field1\" value=\"2\" /></form>");
+            Assert.IsNotNull(form);
+            Assert.AreEqual(1, form.Fields.Count);
+            Assert.AreEqual("2", form.Fields["field1"]);
+        }
 
-        // test post to relative url...
+        [Test]
+        public void ShouldGetSuccessfulyFromFacebook() {
+            var form = WebForm.Get("https://graph.facebook.com/oauth/authorize?client_id=161520467221210&redirect_uri=http://www.facebook.com/connect/login_success.html&type=user_agent&display=popup");
+
+            Assert.IsNotNull(form);
+            Assert.AreEqual("https://login.facebook.com/login.php?login_attempt=1&popup=1&fbconnect=1&display=popup&next=http%3A%2F%2Fwww.facebook.com%2Fconnect%2Fuiserver.php%3Fmethod%3Dpermissions.request%26app_id%3D161520467221210%26display%3Dpopup%26redirect_uri%3Dhttp%253A%252F%252Fwww.facebook.com%252Fconnect%252Flogin_success.html%26type%3Duser_agent%26fbconnect%3D1%26%252Aapp_id%252A%3D161520467221210%26from_login%3D1&legacy_return=1", form.Action);
+        }
+
+        // TODO: test all properties that would be loaded from html
+
+        // TODO: test post to relative url...
 
         private void AssertGoogleForm(WebForm form, bool absolute) {
             Assert.IsNotNull(form);
