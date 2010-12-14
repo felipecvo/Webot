@@ -1,11 +1,10 @@
 namespace Webot {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.IO;
-    using System.Text.RegularExpressions;
     using System.Net;
     using System.Text;
+    using System.Text.RegularExpressions;
     using System.Web;
 
     public class WebForm {
@@ -125,20 +124,14 @@ namespace Webot {
                     postStream.Write(data, 0, data.Length);
                 }
             }
-            
-            using(var response = (HttpWebResponse)request.GetResponse()) {
-                using(var responseStream = response.GetResponseStream()) {
-                    if(response.ContentEncoding == "gzip") {
-                        using (var gzipedResponseStream = new System.IO.Compression.GZipStream(responseStream, System.IO.Compression.CompressionMode.Decompress)){
-                            using(var readStream = new StreamReader(gzipedResponseStream)) {
-                                return readStream.ReadToEnd();
-                            }
-                        }
-                    }
-                    using(var readStream = new StreamReader(responseStream)) {
-                        return readStream.ReadToEnd();
-                    }
-                }
+
+            var response = (HttpWebResponse)request.GetResponse();
+            var responseStream = response.GetResponseStream();
+            if (response.ContentEncoding == "gzip"){
+                responseStream = new System.IO.Compression.GZipStream(responseStream, System.IO.Compression.CompressionMode.Decompress);
+            }
+            using (var readStream = new StreamReader(responseStream)) {
+                return readStream.ReadToEnd();
             }
         }
 
