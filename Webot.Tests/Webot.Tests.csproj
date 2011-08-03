@@ -35,13 +35,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="FactoryRequest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="FactoryRequest, Version=0.0.1.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\FactoryRequest.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="WebFormTest.cs" />
+    <Compile Include="WebPageTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
