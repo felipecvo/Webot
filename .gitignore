@@ -1,5 +1,7 @@
 *.userprefs
 *.pidb
 *.mdb
+*.suo
 test-results/
 bin/
+obj/

@@ -5,12 +5,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webot", "Webot\Webot.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webot.Tests", "Webot.Tests\Webot.Tests.csproj", "{EF4D7589-A634-4698-8703-B25CCF56693A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webot.Console", "Webot.Console\Webot.Console.csproj", "{643F334C-561E-44D0-8AF8-A25D453F8506}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{643F334C-561E-44D0-8AF8-A25D453F8506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{643F334C-561E-44D0-8AF8-A25D453F8506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{643F334C-561E-44D0-8AF8-A25D453F8506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{643F334C-561E-44D0-8AF8-A25D453F8506}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90A90FD4-98CA-46B8-8DB1-5A94D6DFC08E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90A90FD4-98CA-46B8-8DB1-5A94D6DFC08E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90A90FD4-98CA-46B8-8DB1-5A94D6DFC08E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -21,7 +27,7 @@ Global
 		{EF4D7589-A634-4698-8703-B25CCF56693A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Webot\Webot.csproj
+		StartupItem = Webot.Console\Webot.Console.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
 		$1.FileWidth = 120

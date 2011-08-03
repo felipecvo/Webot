@@ -104,7 +104,15 @@ namespace Webot {
             request.CookieContainer = new CookieContainer();
             request.CookieContainer.Add(Cookies);
             request.Method = Method;
+
+            /************************************************/
+            request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+            request.Headers.Add("Accept-Language", "pt-br,pt;q=0.8,en-us;q=0.5,en;q=0.3");
             request.Headers.Add("Accept-Encoding", "gzip,deflate");
+            request.Headers.Add("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.7");
+            request.Headers.Add("Keep-Alive", "115");
+            //request.Referer = "http://facebook.com/";
+
             if(request.Method == "POST") {
                 var fields = new string[Fields.Count];
                 int i = 0;
